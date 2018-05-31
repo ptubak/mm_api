@@ -1,0 +1,30 @@
+{
+  "name": "mm_api",
+  "version": "1.0.0",
+  "description": "mm_api for LMU Prototype Project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ptubak/mm_api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ptubak/mm_api/issues"
+  },
+  "homepage": "https://github.com/ptubak/mm_api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "knex": "^0.14.6",
+    "locus": "^2.0.1",
+    "method-override": "^2.3.10",
+    "morgan": "^1.9.0",
+    "pg": "^7.4.3"
+  }
+}
