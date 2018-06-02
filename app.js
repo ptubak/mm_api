@@ -31,7 +31,7 @@ app.post('/user_create', (req, res) => {
     const age = req.body.create_age 
     
 
-    const queryString = "INSERT INTO users (first_name, last_name, email, street, house_number, post_code, city, age) VALUES (?,?,?,?,?,?,?,?)"
+    const queryString = "INSERT INTO users (first_name, last_name, email, street, house_number, post_code, city, age) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)"
     getConnection().query(queryString, [firstName, lastName, email, street, houseNumber, postCode, city, age], (err, results, fields) => {
         if (err) {
             console.log("Failed to insert new user: " + err)
