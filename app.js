@@ -2,7 +2,7 @@
 const express = require('express')
 const app = express()
 const morgan = require('morgan')
-const mysql = require('mysql')
+const pg = require('pg')
 
 const bodyParser = require('body-parser')
 
@@ -48,12 +48,11 @@ app.post('/user_create', (req, res) => {
 })
 
 function getConnection() {
-    return mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: 'Messemuenchen2018',
-        database: 'MMT_Nodejs_restpi'
-    })
+    var conString = "postgres://qoxkyjqonastys:d09d2f56a0fdbe15008c9944b7464536e0dd2a4deb9f7081c09e2ba38934a3db@ec2-54-243-235-153.compute-1.amazonaws.com:5432/d8shhik6c8ht1r";
+    var client = new pg.Client(conString);
+    client.connect();
+
+    return client;
 }
 
 // Verbindung zur localhost DB
@@ -90,16 +89,13 @@ app.get('/users/:id', (req, res) => {
  // Verbindung zur localhost DB
 app.get('/users', (req, res) => {
     console.log("Fetching all users")
-    
-    const connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: 'Messemuenchen2018',
-        database: 'MMT_Nodejs_restpi'
-    })
+
+    var conString = "postgres://qoxkyjqonastys:d09d2f56a0fdbe15008c9944b7464536e0dd2a4deb9f7081c09e2ba38934a3db@ec2-54-243-235-153.compute-1.amazonaws.com:5432/d8shhik6c8ht1r";
+    var client = new pg.Client(conString);
+    client.connect();
 
     // Ausgabe aller Zeilen der Tabelle
-connection.query("SELECT * FROM users", (err, rows, fields) => {
+    client.query("SELECT * FROM users", (err, rows, fields) => {
     console.log("Users has been fetched successfully")
     res.json(rows)
 })
