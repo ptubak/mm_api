@@ -96,12 +96,14 @@ app.get('/users', (req, res) => {
 
     // Ausgabe aller Zeilen der Tabelle
     client.query("SELECT * FROM users", (err, rows, fields) => {
-    console.log("Users has been fetched successfully")
-    res.json(rows)
+      console.log("Users has been fetched successfully")
+      res.json(rows)
+    })
 })
 
-
-})
+app.get('/create_user', function(req,res){
+ res.sendfile(__dirname + '/public/form.html');
+}); 
 
 
 // Ausgabe von "Hello from Root" bei request von Root Pfad
