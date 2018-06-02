@@ -113,7 +113,8 @@ res.send("Hello from Root")
 */
 
 // Localhost:3006
-app.listen(3006, () => {
-    console.log("Server is up and listening on 3006...")
+
+app.listen(process.env.PORT || 3006, () => {
+    console.log("Server is up and listening on port: " + process.env.PORT || 3006)
 })
 
